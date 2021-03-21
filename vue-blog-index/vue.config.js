@@ -6,6 +6,8 @@ function resolve(dir) {
 const name = 'Vue Blog Index' // page title
 
 module.exports = {
+    publicPath: '/index',
+    outputDir: 'dist',
     devServer: {
         disableHostCheck: true,
     },
