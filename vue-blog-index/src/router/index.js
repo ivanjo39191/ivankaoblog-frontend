@@ -64,6 +64,11 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/helloworld',
+    component: () => import('../components/HelloWorld'),
+    meta: { requireAuth: true },
+  },
+  {
     path: '/test1',
     component: () => import('../components/UserInfo')
     // hidden: true,
