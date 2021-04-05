@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+/* Layout */
+import Layout from '@/layout'
+
 Vue.use(Router)
 
 export const constantRoutes = [
@@ -27,32 +30,45 @@ export const constantRoutes = [
   },
   {
     path: '/index',
-    component: () => import('../components/Header'),
+    component: Layout,
     redirect: '/index/home',
     children: [
       {
         path: 'home',
         component: () => import('../views/Home'),
-        name: 'home'
+        name: 'home',
+      }
+    ]
+  },
+  {
+    path: '/test',
+    component: Layout,
+    redirect: '/test/page1',
+    children: [
+      {
+        path: 'page1',
+        component: () => import('../views/Page1'),
+        name: 'Page1',
       }
     ]
   },
   {
     path: '/profile',
-    component: () => import('../components/Header'),
+    component: Layout,
     redirect: '/profile/index',
     hidden: true,
     children: [
       {
         path: 'index',
         component: () => import('../components/UserInfo'),
-        name: 'Profile'
+        name: 'Profile',
+        meta: { requireAuth: true },
       }
     ]
   },
   {
     path: '/profile',
-    component: () => import('../components/Header'),
+    component: Layout,
     redirect: '/profile/hello',
     hidden: true,
     children: [
