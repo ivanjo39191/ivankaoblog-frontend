@@ -56,7 +56,7 @@ router.beforeEach(async(to, from, next) => {
     }
   } else {
     /* has no token*/
-    if (to.meta.requireAuth){
+    if (to.meta.requireAuth !== true){
       next()
     }
     else if(whiteList.indexOf(to.path) !== -1) {
