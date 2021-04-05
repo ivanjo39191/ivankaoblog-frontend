@@ -4,6 +4,13 @@ import Cookies from 'js-cookie'
 
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import VueCarousel from 'vue-carousel';
+
+// Import Bootstrap an BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import Element from 'element-ui'
 import '@/styles/element-variables.scss'
 
@@ -18,6 +25,12 @@ import './permission' // permission control
 // import '@/utils/error-log' // error log
 
 import * as filters from './filters' // global filters
+
+Vue.use(VueCarousel);
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium' // set element-ui default size
