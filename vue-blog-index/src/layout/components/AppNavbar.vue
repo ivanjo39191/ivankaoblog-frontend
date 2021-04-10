@@ -12,22 +12,10 @@
             <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
             <b-collapse id="nav-text-collapse" is-nav>
               <b-navbar-nav class="ms-auto">
-                <b-nav-item><router-link to="/index">Home</router-link></b-nav-item>
+                <b-nav-item><router-link to="/">Home</router-link></b-nav-item>
               </b-navbar-nav>
               <b-navbar-nav>
                 <b-nav-item><router-link to="/profile/index">profile</router-link></b-nav-item>
-              </b-navbar-nav>
-              <b-navbar-nav>
-               <b-nav-item><router-link to="/index/home">index/Home</router-link></b-nav-item>
-              </b-navbar-nav>
-              <b-navbar-nav>
-               <b-nav-item><router-link to="/aprofile/index">aprofile</router-link></b-nav-item>
-              </b-navbar-nav>
-              <b-navbar-nav>
-                <b-nav-item><router-link to="/profile/hello">pofilehello</router-link></b-nav-item>
-              </b-navbar-nav>
-              <b-navbar-nav>
-                <b-nav-item><router-link to="/test1">test1</router-link></b-nav-item>
               </b-navbar-nav>
               <b-navbar-nav>
                 <b-nav-item><router-link to="/test/page1">page1</router-link></b-nav-item>

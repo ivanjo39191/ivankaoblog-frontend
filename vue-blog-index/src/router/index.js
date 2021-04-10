@@ -9,7 +9,7 @@ Vue.use(Router)
 export const constantRoutes = [
   {
     path: '/redirect',
-    component: () => import('../views/Home'),
+    component: () => import('../views/home/index'),
     hidden: true,
     children: [
       {
@@ -29,13 +29,13 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/index',
+    path: '/',
     component: Layout,
-    redirect: '/index/home',
+    redirect: '/home',
     children: [
       {
         path: 'home',
-        component: () => import('../views/Home'),
+        component: () => import('../views/home/index'),
         name: 'home',
       }
     ]
@@ -67,27 +67,9 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/profile',
-    component: Layout,
-    redirect: '/profile/hello',
-    hidden: true,
-    children: [
-      {
-        path: 'hello',
-        component: () => import('../components/UserInfo'),
-        name: 'hello'
-      }
-    ]
-  },
-  {
     path: '/helloworld',
     component: () => import('../components/HelloWorld'),
     meta: { requireAuth: true },
-  },
-  {
-    path: '/test1',
-    component: () => import('../components/UserInfo')
-    // hidden: true,
   }
 ]
 
