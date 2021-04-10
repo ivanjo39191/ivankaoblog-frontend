@@ -3,6 +3,8 @@
     <div class="container-fuild">
       <app-navbar />
       <app-header />
+    </div>
+    <div class="container">
       <app-main />
       <app-footer />
     </div>
