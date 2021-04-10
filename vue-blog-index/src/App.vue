@@ -11,9 +11,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import url(//fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap);
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans TC', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
