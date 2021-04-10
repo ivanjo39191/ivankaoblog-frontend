@@ -37,6 +37,7 @@ export const constantRoutes = [
         path: 'home',
         component: () => import('../views/home/index'),
         name: 'home',
+        meta: { requireAuth: false },
       }
     ]
   },
