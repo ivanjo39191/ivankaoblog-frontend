@@ -13,3 +13,10 @@ export function getBlogTitle() {
     method: 'get',
   })
 }
+
+export function getBlogTypeTitle(type) {
+  return request({
+    url: process.env.VUE_APP_BACKEND_SERVER + '/api/blog/blog/blogtype/?type=' + type,
+    method: 'get',
+  })
+}
