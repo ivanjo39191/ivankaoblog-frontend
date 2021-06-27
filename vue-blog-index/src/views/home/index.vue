@@ -8,7 +8,7 @@
           <LatestArticle/>
         </div>
         <div class="col-md-4 col-xs-12">
-          <UserProfile/>
+          <BlogInfo/>
         </div>
       </div>
       <div class="middle row">
@@ -33,7 +33,7 @@
 
 <script>
 import LatestArticle from './components/LatestArticle'
-import UserProfile from './components/UserProfile'
+import BlogInfo from './components/BlogInfo'
 import BlogTypeArticles from './components/BlogTypeArticles'
 import Articles from './components/Articles'
 import Info from './components/Info'
@@ -41,7 +41,7 @@ export default {
   name: 'Home',
   components: {
     LatestArticle,
-    UserProfile,
+    BlogInfo,
     BlogTypeArticles,
     Articles,
     Info
