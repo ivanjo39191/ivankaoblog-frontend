@@ -3,7 +3,7 @@ import request from '@/utils/request'
 //django jwt
 export function login(data) {
   return request({
-    url: 'http://ttime-demo.ivankaoblog.com:8000/api/token/',
+    url: process.env.VUE_APP_BACKEND_SERVER + '/api/token/',
     method: 'post',
     data: data
   })
@@ -11,7 +11,7 @@ export function login(data) {
 
 export function getInfo(token) {
   return request({
-    url: 'http://ttime-demo.ivankaoblog.com:8000/api/users/profile/',
+    url: process.env.VUE_APP_BACKEND_SERVER + '/api/users/profile/',
     method: 'get',
     headers: {
       'Content-Type': 'application/json',
