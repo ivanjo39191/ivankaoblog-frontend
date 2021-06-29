@@ -42,6 +42,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/articles',
+    component: Layout,
+    redirect: '/articles',
+    children: [
+      {
+        path: '/',
+        name: 'articles',
+        component: () => import('../views/articles/components/Articles'),
+        meta: { requireAuth: false },
+      }
+    ]
+  },
+  {
     path: '/test',
     component: Layout,
     redirect: '/test/page1',

@@ -20,3 +20,10 @@ export function getBlogTypeTitle(type) {
     method: 'get',
   })
 }
+
+export function getArticleDetail(id) {
+  return request({
+    url: process.env.VUE_APP_BACKEND_SERVER + '/api/blog/blog/' + id,
+    method: 'get',
+  })
+}
