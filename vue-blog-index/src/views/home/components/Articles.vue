@@ -2,8 +2,10 @@
   <div class="articles content-box">
     <div class="row d-flex justify-content-left">
       <div class="col-12" v-bind:key="article.id" v-for="article in articles.slice(0,8)">
-        <p class="text title">{{ article.title }}</p>
-        <p class="text content">{{ article.content|strippedContent|truncate(100, '...') }}</p>
+        <router-link :to="{ path: '/articles', query: { id: article.id }}">
+          <p class="text title">{{ article.title }}</p>
+          <p class="text content">{{ article.content|strippedContent|truncate(100, '...') }}</p>
+        </router-link>
       </div>
     </div>
   </div>  

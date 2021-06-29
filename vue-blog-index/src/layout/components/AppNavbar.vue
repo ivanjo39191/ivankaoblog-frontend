@@ -4,7 +4,7 @@
       <keep-alive>
         <div class="container-fuild">
           <b-navbar toggleable="sm" type="dark" variant="dark">
-            <b-navbar-brand>IvanKaoBlog</b-navbar-brand>
+            <b-navbar-brand><router-link to="/">IvanKaoBlog</router-link></b-navbar-brand>
             <b-nav-form>
               <b-form-input class="mr-sm-2" placeholder="Search"></b-form-input>
               <!-- <b-button variant="outline-success" class="my-2 my-sm-0" type="submit">Search</b-button> -->

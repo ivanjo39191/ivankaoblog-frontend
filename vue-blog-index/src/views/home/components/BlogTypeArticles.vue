@@ -7,21 +7,27 @@
       <h4>Django</h4>
       <br>
       <div class="article-obj" v-bind:key="article.id" v-for="article in django.slice(0, 10)">
-        <p>{{ article.title }}</p>
+        <router-link :to="{ path: '/articles', query: { id: article.id }}">
+          <p>{{ article.title }}</p>
+        </router-link>
       </div>
     </div>
     <div class="article col-md-4 col-xs-6">
       <h4>OS</h4>
       <br>
       <div class="article-obj" v-bind:key="article.id" v-for="article in os.slice(0, 10)">
-        <p>{{ article.title }}</p>
+        <router-link :to="{ path: '/articles', query: { id: article.id }}">
+          <p>{{ article.title }}</p>
+        </router-link>
       </div>
     </div>
     <div class="article col-md-4 col-xs-6">
       <h4>個人記事</h4>
       <br>
       <div class="article-obj" v-bind:key="article.id" v-for="article in my.slice(0, 10)">
-        <p>{{ article.title }}</p>
+        <router-link :to="{ path: '/articles', query: { id: article.id }}">
+          <p>{{ article.title }}</p>
+        </router-link>
       </div>
     </div>
     <hr />
@@ -29,21 +35,27 @@
       <h4>Vue</h4>
       <br>
       <div class="article-obj" v-bind:key="article.id" v-for="article in vue.slice(0, 10)">
-        <p>{{ article.title }}</p>
+        <router-link :to="{ path: '/articles', query: { id: article.id }}">
+          <p>{{ article.title }}</p>
+        </router-link>
       </div>
     </div>
     <div class="article col-md-4 col-xs-6">
       <h4>CSS</h4>
       <br>
       <div class="article-obj" v-bind:key="article.id" v-for="article in css.slice(0, 10)">
-        <p>{{ article.title }}</p>
+        <router-link :to="{ path: '/articles', query: { id: article.id }}">
+          <p>{{ article.title }}</p>
+        </router-link>
       </div>
     </div>
     <div class="article col-md-4 col-xs-6">
       <h4>LeetCode</h4>
       <br>
       <div class="article-obj" v-bind:key="article.id" v-for="article in leetcode.slice(0, 10)">
-        <p>{{ article.title }}</p>
+        <router-link :to="{ path: '/articles', query: { id: article.id }}">
+          <p>{{ article.title }}</p>
+        </router-link>
       </div>
     </div>
 

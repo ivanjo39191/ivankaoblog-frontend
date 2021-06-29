@@ -5,16 +5,20 @@
   <div class="news row">
     <div class="col-md-6 col-xs-12">
       <div class="article" v-bind:key="article.id" v-for="article in articles.slice(0, 1)">
-        <p class="title-first">{{ article.title }}</p>
-        <div class="article-banner">
-          <img v-bind:src="backendUrl + article.banner"/>
-        </div>
+        <router-link :to="{ path: '/articles', query: { id: article.id }}">
+          <p class="title-first">{{ article.title }}</p>
+          <div class="article-banner">
+            <img v-bind:src="backendUrl + article.banner"/>
+          </div>
+        </router-link>
       </div>
     </div>
     <div class="col-md-6 col-xs-12">
-      <div class="article" v-bind:key="article.id" v-for="article in articles.slice(1, 8)">
-        <p calss="title">{{ article.title }}</p>
-      </div>
+        <div class="article" v-bind:key="article.id" v-for="article in articles.slice(1, 8)">
+          <router-link :to="{ path: '/articles', query: { id: article.id }}">
+            <p calss="title">{{ article.title }}</p>
+          </router-link>
+        </div>
     </div>
   </div>
 </template>
