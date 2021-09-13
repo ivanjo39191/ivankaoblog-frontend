@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  nuxt:
+    image: ttime-frontend:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./ttime-frontend:/app
+    env_file:
+      - .env
+    networks:
+        main:
+            aliases:
+                - nginx
+  nginx:
+    image: nginx:1.19
+    ports:
+      - "9527:443"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - nuxt
+    networks:
+        main:
+            aliases:
+                - nginx
+networks:
+  main:

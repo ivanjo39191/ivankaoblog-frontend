@@ -1,0 +1,89 @@
+@media (max-width: 750px) {
+  :root {
+    font-size: 12px;
+  }
+
+  html,
+  body {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 750px) {
+  :root {
+    font-size: 12px;
+  }
+
+  html,
+  body {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 1366px) and (max-width: 1500px) {
+  :root {
+    font-size: 12px;
+  }
+
+  html,
+  body {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 1500px) and (max-width: 1920px) {
+  :root {
+    font-size: 14px;
+  }
+
+  html,
+  body {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    font-size: 16px;
+  }
+
+  html,
+  body {
+    font-size: 1.6rem;
+  }
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+#app {
+  height: 100%;
+  font-family: 'Noto Sans TC', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+
+  /* margin-top: 60px; */
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+#app::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}
