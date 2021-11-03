@@ -2,50 +2,15 @@
   <div class="app-navbar">
     <transition name="fade">
       <keep-alive>
-        <div class="container-fuild">
-          <b-navbar toggleable="sm" type="dark" variant="dark">
-            <b-navbar-brand>
-              <router-link to="/">
-                IvanKaoBlog
-              </router-link>
-            </b-navbar-brand>
-            <b-nav-form>
-              <b-form-input class="mr-sm-2" placeholder="Search" />
-              <!-- <b-button variant="outline-success" class="my-2 my-sm-0" type="submit">Search</b-button> -->
-            </b-nav-form>
-            <b-navbar-toggle target="nav-text-collapse" />
-            <b-collapse id="nav-text-collapse" is-nav>
-              <b-navbar-nav class="ms-auto">
-                <b-nav-item>
-                  <router-link to="/">
-                    Home
-                  </router-link>
-                </b-nav-item>
-              </b-navbar-nav>
-              <b-navbar-nav>
-                <b-nav-item>
-                  <router-link to="/profile/index">
-                    profile
-                  </router-link>
-                </b-nav-item>
-              </b-navbar-nav>
-              <b-navbar-nav>
-                <b-nav-item>
-                  <router-link to="/test/page1">
-                    page1
-                  </router-link>
-                </b-nav-item>
-              </b-navbar-nav>
-              <b-navbar-nav>
-                <!-- Navbar dropdowns -->
-                <b-nav-item-dropdown text="登入登出">
-                  <b-dropdown-item divided @click.native="logout">
-                    登出
-                  </b-dropdown-item>
-                </b-nav-item-dropdown>
-              </b-navbar-nav>
-            </b-collapse>
-          </b-navbar>
+        <div class="navbar-main">
+          <router-link to="/">
+            <div class="logo">
+              Logo
+            </div>
+          </router-link>
+          <div class="login">
+            <Login />
+          </div>
         </div>
       </keep-alive>
     </transition>
@@ -53,41 +18,76 @@
 </template>
 
 <script>
+import Login from '@/pages/login/index.vue'
+
 export default {
   name: 'AppNavbar',
+  components: {
+    Login
+  },
   props: {
     msg: String
-  },
-  methods: {
-    toggleSideBar () {
-      this.$store.dispatch('app/toggleSideBar')
-    },
-    async logout () {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-/* The navbar container */
+<style lang="scss" scoped>
 
-/* or use fixed="top" */
-.navbar {
-  z-index: 1;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background-color: #282c34;
-  color: white;
-  font-family: 'Exo 2', sans-serif;
-  padding: 2em;
+@media (max-width: 750px) {
+  .navbar-main {
+    display: grid;
+    position: fixed;
+    height: 3vh;
+    width: 100%;
+    background-color: #fff;
+    z-index: 900;
+  }
+
+  .navbar-left {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .navbar-right-top {
+    display: none;
+  }
+
+  .navbar-right {
+    display: none;
+  }
 }
 
-li {
-  list-style-type: none;
+@media (min-width: 750px) {
+  .navbar-main {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    height: 6.6vh;
+    background-color: #fff;
+    width: 100%;
+    padding-left: 23vw;
+    padding-right: 23vw;
+    z-index: 900;
+  }
+
+  .navbar-main > a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .login {
+    margin-left: auto;
+  }
+
+  .login > div {
+    margin-right: 1vw;
+  }
+
+  .logo {
+    margin-left: 1vw;
+  }
 }
+
 </style>

@@ -56,7 +56,7 @@ export default {
   .app-wrapper {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 12.6vh auto  15vh;
+    grid-template-rows: 6.6vh auto  15vh;
   }
 
   .header {

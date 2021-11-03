@@ -7,7 +7,7 @@
           <div class="left-top-content">
             <p>Designed by ivankao </p>
             <p>版權所有，未經許可，不許轉載</p>
-            <p>© 2021 TTime CO.,LTD. All Rights Reserved.</p>
+            <p>© 2021 IvanKao CO.,LTD. All Rights Reserved.</p>
           </div>
         </div>
         <div class="left-bottom" />
@@ -15,7 +15,7 @@
       <div class="right">
         <div class="right-obj">
           <div class="right-obj-title">
-            <p>關於TTime</p>
+            <p>關於我</p>
           </div>
           <div class="right-obj-line" />
           <div class="right-obj-content">
@@ -64,7 +64,7 @@ export default {
 .app-footer {
   display: grid;
   grid-template-columns: 16.66vw 66.6vw 16.66vw;
-  background-color: #199f92;
+  background-color: #fff;
   height: 27.7vh;
   width: 100vw;
 }
@@ -95,7 +95,7 @@ export default {
 
 .left-top-content {
   grid-row: 4 / 5;
-  color: #fff;
+  color: #000;
   font-size: 0.875rem;
   font-weight: 300;
   letter-spacing: 0.05em;
@@ -120,7 +120,7 @@ export default {
 }
 
 .right-obj-title > p {
-  color: #fff;
+  color: #000;
   font-size: 1.125rem;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -128,13 +128,13 @@ export default {
 }
 
 .right-obj-line {
-  background-color: #fff;
+  background-color: #000;
   height: 1px;
   margin: 1rem 0 1rem 0;
 }
 
 .right-obj-content > p {
-  color: #fff;
+  color: #000;
   font-size: 0.9375rem;
   font-weight: 300;
   letter-spacing: 0.05em;
