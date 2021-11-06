@@ -1,52 +1,75 @@
+
 <template>
-  <div class="home-carousel">
-    <carousel
-      :per-page="1"
-      :mouse-drag="true"
-      :autoplay="true"
-      :autoplay-timeout="5000"
-      :loop="true"
-    >
-      <slide v-for="(item,index) in imgArray" :key="index">
-        <div class="background-img" :style="{backgroundImage: 'url(' + item + ')' }" />
-      </slide>
-    </carousel>
-  </div>
+  <v-carousel
+    v-if="items.length"
+    cycle
+    height="75vh"
+    hide-delimiter-background
+    :show-arrows="false"
+  >
+    <v-carousel-item v-for="item in items" :key="item.id" :src="item.banner">
+      <div class="carousel-text">
+        <div class="carousel-title">
+          {{ item.title }}
+        </div>
+        <div class="carousel-subtitle">
+          {{ item.subtitle }}
+        </div>
+      </div>
+    </v-carousel-item>
+  </v-carousel>
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel'
+import { getHomeCarousel } from '@/api/blog'
+
 export default {
   name: 'HomeCarousel',
-  components: {
-    Carousel,
-    Slide
-  },
-  props: {
-    msg: String
-  },
   data () {
     return {
-      imgArray: [
-        require('../../../assets/banner4.jpg'),
-        require('../../../assets/banner3.jpg'),
-        require('../../../assets/banner2.jpg')
-      ]
+      items: []
+    }
+  },
+  mounted () {
+    this.getHomeCarousel()
+  },
+  methods: {
+    getHomeCarousel () {
+      return new Promise((resolve, reject) => {
+        getHomeCarousel()
+          .then((response) => {
+            // console.log(JSON.stringify(response))
+            this.items = response
+            resolve()
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .carousel-height {
+    margin-bottom: 0;
+  }
 
-.background-img {
-  max-width: 100%;
-  background-size: cover;
-  padding-top: 30vh;
-}
+  .carousel-text {
+    display: grid;
+    justify-items: center;
+    margin-top: 30vh;
+    margin-left: -50vw;
+    color: #fff;
+    text-shadow: 0.1em 0.1em 0.05em #333;
+  }
 
-.VueCarousel-inner {
-  z-index: 1;
-}
+  .carousel-title {
+    font-size: 2.5rem;
+  }
+
+  .carousel-subtitle {
+    font-size: 1.5rem;
+  }
 </style>

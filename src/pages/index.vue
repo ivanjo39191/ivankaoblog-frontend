@@ -1,77 +1,37 @@
 <template>
-  <div class="content-box">
-    <div class="content">
-      <div class="top row">
-        <hr>
-        <!-- <h4>Latest Articles</h4> -->
-        <div class="col-md-8 col-xs-12">
-          <LatestArticle />
-        </div>
-        <div class="col-md-4 col-xs-12">
-          <BlogInfo />
-        </div>
+  <div class="home">
+    <div class="home-carousel">
+      <HomeCarousel />
+    </div>
+    <div class="main">
+      <div class="home-subnavbar">
+        <SubNavbar />
       </div>
-      <div class="middle row">
-        <hr>
-        <!-- <h4>Blog Type Articles</h4> -->
-        <div class="col-12">
-          <BlogTypeArticles />
-        </div>
-      </div>
-      <div class="bottom row">
-        <hr>
-        <div class="col-md-8 col-xs-12">
-          <Articles />
-        </div>
-        <div class="col-md-4 col-xs-12">
-          <Info />
-        </div>
+      <div class="home-latest">
+        <Latest />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import LatestArticle from './home/components/LatestArticle'
-import BlogInfo from './home/components/BlogInfo'
-import BlogTypeArticles from './home/components/BlogTypeArticles'
-import Articles from './home/components/Articles'
-import Info from './home/components/Info'
+import HomeCarousel from './home/components/HomeCarousel'
+import SubNavbar from './home/components/SubNavbar'
+import Latest from './home/components/Latest'
 export default {
   name: 'Home',
   components: {
-    LatestArticle,
-    BlogInfo,
-    BlogTypeArticles,
-    Articles,
-    Info
+    HomeCarousel,
+    SubNavbar,
+    Latest
   },
   layout: 'index'
 }
 
 </script>
-
 <style scoped>
-
-hr {
-  margin-top: 3vh;
-  margin-bottom: 3vh;
+.main {
+  padding-left: 23vw;
+  padding-right: 23vw;
 }
-
-.top {
-  margin-top: 10;
-}
-
-.middle {
-  margin-top: 10;
-}
-
-.bottom {
-  margin-top: 10vh;
-}
-
-h4 {
-  text-align: left;
-}
-
 </style>
