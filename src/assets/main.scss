@@ -49,7 +49,7 @@
 
   html,
   body {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -64,26 +64,36 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: 'Noto Sans TC', sans-serif;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
 }
 
 label {
   font-weight: 700;
 }
 
-#app {
-  height: 100%;
-  font-family: 'Noto Sans TC', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-
-  /* margin-top: 60px; */
-  overflow-y: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+h1 {
+  font-size: 3rem;
+  font-weight: 400;
 }
 
-#app::-webkit-scrollbar { /* WebKit */
-  width: 0;
-  height: 0;
+h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 400;
 }

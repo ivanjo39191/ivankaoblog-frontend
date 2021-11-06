@@ -24,10 +24,10 @@ export default {
   name: 'AppNavbar',
   components: {
     Login
-  },
-  props: {
-    msg: String
   }
+  // props: {
+  //   msg: String
+  // }
 }
 </script>
 

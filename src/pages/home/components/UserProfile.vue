@@ -11,16 +11,16 @@
 </template>
 
 <script>
-import store from "@/store";
+import store from '@/store'
 
 export default {
-  name: "UserProfile",
+  name: 'UserProfile',
   data () {
-      return {
+    return {
       userName: store.getters.name,
       userIntroduction: store.getters.introduction,
-      userRoles: store.getters.roles,
-      }
+      userRoles: store.getters.roles
+    }
   },
   store
 }

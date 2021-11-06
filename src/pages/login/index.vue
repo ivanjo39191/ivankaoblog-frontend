@@ -2,13 +2,13 @@
   <v-dialog v-model="dialog" persistent max-width="600px">
     <template #activator="{ on, attrs }">
       <div class="navbar-div" v-bind="attrs" v-on="on">
-        會員登入
+        Login
       </div>
     </template>
     <div class="login">
       <v-card>
         <v-card-title>
-          <span class="text-h5">TTime 登入</span>
+          <span class="text-h5">Blog 登入</span>
         </v-card-title>
         <v-form
           ref="loginForm"
@@ -96,10 +96,10 @@ export default {
 }
 
 .navbar-div {
-  display: flex;
+  display: grid;
   align-items: center;
   color: #707070;
-  font-size: 1.2vw;
+  font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: 0.02vw;
 }
