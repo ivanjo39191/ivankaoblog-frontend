@@ -1,4 +1,4 @@
-import { getBlogTypeTitle } from '@/api/blog'
+import { getBlogTitle, getBlogTypeTitle } from '@/api/blog'
 
 export const state = () => ({
   latest: [],
@@ -17,15 +17,27 @@ export const mutations = {
 export const actions = {
   switchLatest ({ commit }, type) {
     return new Promise((resolve, reject) => {
-      getBlogTypeTitle(type)
-        .then((response) => {
-          commit('setLatest', response)
-          commit('setSubnavbarActive', type)
-          resolve()
-        })
-        .catch((error) => {
-          reject(error)
-        })
+      if (type === '') {
+        getBlogTitle()
+          .then((response) => {
+            commit('setLatest', response)
+            commit('setSubnavbarActive', type)
+            resolve()
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      } else {
+        getBlogTypeTitle(type)
+          .then((response) => {
+            commit('setLatest', response)
+            commit('setSubnavbarActive', type)
+            resolve()
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      }
     })
   }
 }
