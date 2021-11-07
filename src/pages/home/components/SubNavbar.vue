@@ -55,25 +55,54 @@ export default {
 }
 </script>
 <style>
-.subnavbar-main {
-  display: flex;
-  height: 8vh;
-  background-color: #fff;
-  width: 100%;
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.54);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 3vh;
+@media (max-width: 979px) {
+  .subnavbar-main {
+    display: flex;
+    flex-wrap: wrap;
+    height: 15vh;
+    margin-top: 5vh;
+    background-color: #fff;
+    width: 100%;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.54);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 3vh;
+  }
+
+  .subnavbar-tab {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .subnavbar-tab > button {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
 }
 
-.subnavbar-tab {
-  display: flex;
-  align-items: center;
-}
+@media (min-width: 980px) {
+  .subnavbar-main {
+    display: flex;
+    height: 8vh;
+    background-color: #fff;
+    width: 100%;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.54);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 3vh;
+  }
 
-.subnavbar-tab > button {
-  margin-left: 1vw;
-  margin-right: 1vw;
+  .subnavbar-tab {
+    display: flex;
+    align-items: center;
+  }
+
+  .subnavbar-tab > button {
+    margin-left: 1vw;
+    margin-right: 1vw;
+  }
 }
 
 .subnavbar-tab-item-active {

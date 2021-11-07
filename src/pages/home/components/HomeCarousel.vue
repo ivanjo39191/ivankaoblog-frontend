@@ -52,6 +52,7 @@ export default {
 </script>
 
 <style scoped>
+
   .carousel-height {
     margin-bottom: 0;
   }
@@ -71,5 +72,10 @@ export default {
 
   .carousel-subtitle {
     font-size: 1.5rem;
+    margin-top: 5vh;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    text-align: center;
   }
+
 </style>

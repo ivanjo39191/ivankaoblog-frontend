@@ -30,8 +30,17 @@ export default {
 
 </script>
 <style scoped>
-.main {
-  padding-left: 23vw;
-  padding-right: 23vw;
+@media (max-width: 979px) {
+  .main {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
+
+@media (min-width: 980px) {
+  .main {
+    padding-left: 23vw;
+    padding-right: 23vw;
+  }
 }
 </style>

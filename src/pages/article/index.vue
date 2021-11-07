@@ -64,14 +64,74 @@ export default {
 <style scoped>
 @import '../../utils/prism.css';
 
-.main {
-  padding-left: 32vw;
-  padding-right: 32vw;
+@media (max-width: 979px) {
+  .main {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .image > img {
+    display: flex;
+    width: 90vw;
+  }
+
+  /* Code blocks */
+  .article-content >>> code,
+  .article-content >>> pre {
+    color: #f8f8f2;
+    background: none;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1.1rem;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
 }
 
-.image > img {
-  display: flex;
-  width: 36vw;
+@media (min-width: 980px) {
+  .main {
+    padding-left: 32vw;
+    padding-right: 32vw;
+  }
+
+  .image > img {
+    display: flex;
+    width: 36vw;
+  }
+
+  /* Code blocks */
+  .article-content >>> code,
+  .article-content >>> pre {
+    color: #f8f8f2;
+    background: none;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.5em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
 }
 
 .article-content >>> h1 {
@@ -141,29 +201,6 @@ export default {
 
 .article-content >>> li {
   color: #bbb;
-}
-
-/* Code blocks */
-.article-content >>> code,
-.article-content >>> pre {
-  color: #f8f8f2;
-  background: none;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  font-size: 0.5em;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.5;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
 }
 
 /* Code blocks */

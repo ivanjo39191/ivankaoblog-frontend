@@ -1,6 +1,6 @@
 <template>
   <div class="subnavbar-latest">
-    <div v-for="item in articleItems" :key="item.id" class="subnavbar-tab">
+    <div v-for="item in articleItems" :key="item.id">
       <router-link :to="{ name: 'article', query: {id: item.id, title: item.title}}">
         <div v-if="item.banner !== null" class="subnavbar-image">
           <img :src="backendUrl + item.banner">
@@ -45,14 +45,26 @@ export default {
 }
 </script>
 <style>
-.subnavbar-latest {
-  display: grid;
-  align-items: start;
-  grid-template-columns: 17vw 17vw 17vw;
-  gap: 3vh 1vw;
-  padding-bottom: 10vh;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  min-height: 50vh;
+@media (max-width: 979px) {
+  .subnavbar-latest {
+    display: grid;
+    align-items: start;
+    padding-bottom: 10vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 50vh;
+  }
+}
+
+@media (min-width: 980px) {
+  .subnavbar-latest {
+    display: grid;
+    align-items: start;
+    grid-template-columns: 17vw 17vw 17vw;
+    gap: 3vh 1vw;
+    padding-bottom: 10vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 50vh;
+  }
 }
 
 .subnavbar-image > img {
@@ -79,4 +91,5 @@ a {
   color: #292929;
   text-decoration: none;
 }
+
 </style>

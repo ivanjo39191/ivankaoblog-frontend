@@ -63,22 +63,63 @@ export default {
 }
 </script>
 <style>
-.subnavbar-main {
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  height: 8vh;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 3vh;
+@media (max-width: 979px) {
+  .subnavbar-main {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    height: 15vh;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 3vh;
+  }
+
+  .subnavbar-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+
+  .subnavbar-tab {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    color: rgba(0, 0, 0, 0.54);
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
 }
 
-.subnavbar-items {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding-left: 15vw;
-  padding-right: 15vw;
+@media (min-width: 980px) {
+  .subnavbar-main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #fff;
+    height: 8vh;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 3vh;
+  }
+
+  .subnavbar-items {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 15vw;
+    padding-right: 15vw;
+  }
+
+  .subnavbar-tab {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.54);
+    margin-left: 1vw;
+    margin-right: 1vw;
+  }
 }
 
 .subnavbar-items > a {
@@ -89,13 +130,6 @@ export default {
   font-size: 1.25rem;
   font-weight: 300;
   color: #000;
-}
-
-.subnavbar-tab {
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.54);
-  margin-left: 1vw;
-  margin-right: 1vw;
 }
 
 </style>
