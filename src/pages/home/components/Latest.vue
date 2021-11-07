@@ -3,7 +3,8 @@
     <div v-for="item in articleItems" :key="item.id" class="subnavbar-tab">
       <router-link :to="{ name: 'article', query: {id: item.id, title: item.title}}">
         <div v-if="item.banner !== null" class="subnavbar-image">
-          <img :src="backendUrl + item.banner + '?cache=' + Date.now()">
+          <img :src="backendUrl + item.banner">
+          <!-- <img :src="backendUrl + item.banner + '?cache=' + Date.now()"> -->
         </div>
         <div class="subnavbar-title">
           {{ item.title }}
