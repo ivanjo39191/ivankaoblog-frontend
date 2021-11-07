@@ -62,6 +62,8 @@ export default {
 
 </script>
 <style scoped>
+@import '../../utils/prism.css';
+
 .main {
   padding-left: 32vw;
   padding-right: 32vw;
@@ -135,5 +137,52 @@ export default {
   border-style: none none dotted;
   color: #fff;
   background-color: #fff;
+}
+
+.article-content >>> li {
+  color: #bbb;
+}
+
+/* Code blocks */
+.article-content >>> code,
+.article-content >>> pre {
+  color: #f8f8f2;
+  background: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.5em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+.article-content >>> pre {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+.article-content >>> :not(pre) > code,
+.article-content >>> pre {
+  background: #272822;
+}
+
+/* Inline code */
+.article-content >>> :not(pre) > code {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
 }
 </style>

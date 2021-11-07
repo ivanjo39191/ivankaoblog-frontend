@@ -2,7 +2,7 @@
   <div class="subnavbar-main">
     <div class="subnavbar-items">
       <router-link to="/">
-        <div class="subnavbar-title">
+        <div v-if="homeCarouselItem.length" class="subnavbar-title">
           {{ homeCarouselItem.title }}
         </div>
       </router-link>
@@ -36,7 +36,9 @@ export default {
         getHomeCarousel()
           .then((response) => {
             // console.log(JSON.stringify(response))
-            this.homeCarouselItem = response[0]
+            if (response.length) {
+              this.homeCarouselItem = response[0]
+            }
             resolve()
           })
           .catch((error) => {
