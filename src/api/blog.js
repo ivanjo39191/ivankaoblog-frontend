@@ -1,50 +1,50 @@
 import request from '@/utils/request'
 
-export function getBlog () {
+export function getBlog (backendUrl) {
   return request({
-    url: process.env.VUE_APP_BACKEND_SERVER + '/api/blog/blog/',
+    url: backendUrl + '/api/blog/blog/',
     method: 'get'
   })
 }
 
-export function getBlogTitle () {
+export function getBlogTitle (backendUrl) {
   return request({
-    url: process.env.VUE_APP_BACKEND_SERVER + '/api/blog/blog/title/',
+    url: backendUrl + '/api/blog/blog/title/',
     method: 'get'
   })
 }
 
-export function getBlogTypeTitle (type) {
+export function getBlogTypeTitle (type, backendUrl) {
   return request({
-    url: process.env.VUE_APP_BACKEND_SERVER + '/api/blog/blog/blogtype/?types=' + type,
+    url: backendUrl + '/api/blog/blog/blogtype/?types=' + type,
     method: 'get'
   })
 }
 
-export function getBlogSubTypeTitle (type, subtype) {
+export function getBlogSubTypeTitle (type, subtype, backendUrl) {
   return request({
-    url: process.env.VUE_APP_BACKEND_SERVER + '/api/blog/blog/blogtype/?types=' + type + '&subtypes' + subtype,
+    url: backendUrl + '/api/blog/blog/blogtype/?types=' + type + '&subtypes' + subtype,
     method: 'get'
   })
 }
 
-export function getArticleDetail (id, title) {
+export function getArticleDetail (id, title, backendUrl) {
   return request({
-    url: process.env.VUE_APP_BACKEND_SERVER + '/api/blog/blog/' + id + '/?title' + title,
+    url: backendUrl + '/api/blog/blog/' + id + '/?title' + title,
     method: 'get'
   })
 }
 
-export function getHomeCarousel () {
+export function getHomeCarousel (backendUrl) {
   return request({
-    url: process.env.VUE_APP_BACKEND_SERVER + '/api/blog/homecarousel/',
+    url: backendUrl + '/api/blog/homecarousel/',
     method: 'get'
   })
 }
 
-export function getBlogType () {
+export function getBlogType (backendUrl) {
   return request({
-    url: process.env.VUE_APP_BACKEND_SERVER + '/api/blog/blogtype/',
+    url: backendUrl + '/api/blog/blogtype/',
     method: 'get'
   })
 }

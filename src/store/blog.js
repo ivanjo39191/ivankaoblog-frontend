@@ -15,23 +15,23 @@ export const mutations = {
 }
 
 export const actions = {
-  switchLatest ({ commit }, type) {
+  switchLatest ({ commit }, obj) {
     return new Promise((resolve, reject) => {
-      if (type === '') {
-        getBlogTitle()
+      if (obj.typeName === '') {
+        getBlogTitle(obj.backendUrl)
           .then((response) => {
             commit('setLatest', response)
-            commit('setSubnavbarActive', type)
+            commit('setSubnavbarActive', obj.typeName)
             resolve()
           })
           .catch((error) => {
             reject(error)
           })
       } else {
-        getBlogTypeTitle(type)
+        getBlogTypeTitle(obj.typeName, obj.backendUrl)
           .then((response) => {
             commit('setLatest', response)
-            commit('setSubnavbarActive', type)
+            commit('setSubnavbarActive', obj.typeName)
             resolve()
           })
           .catch((error) => {

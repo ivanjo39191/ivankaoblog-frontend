@@ -36,7 +36,7 @@ export default {
   methods: {
     getHomeCarousel () {
       return new Promise((resolve, reject) => {
-        getHomeCarousel()
+        getHomeCarousel(this.$store.getters['domain/domain'])
           .then((response) => {
             // console.log(JSON.stringify(response))
             this.items = response

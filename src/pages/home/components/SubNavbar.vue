@@ -37,7 +37,7 @@ export default {
   methods: {
     getBlogType () {
       return new Promise((resolve, reject) => {
-        getBlogType()
+        getBlogType(this.$store.getters['domain/domain'])
           .then((response) => {
             // console.log(JSON.stringify(response))
             this.items = response
@@ -48,8 +48,12 @@ export default {
           })
       })
     },
-    getBlog (typeName) {
-      this.$store.dispatch('blog/switchLatest', typeName)
+    getBlog (type) {
+      const obj = {
+        typeName: type,
+        backendUrl: this.$store.getters['domain/domain']
+      }
+      this.$store.dispatch('blog/switchLatest', obj)
     }
   }
 }

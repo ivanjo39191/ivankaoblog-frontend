@@ -36,7 +36,7 @@ export default {
   data () {
     return {
       article: [],
-      backendUrl: process.env.VUE_APP_BACKEND_SERVER
+      backendUrl: this.$store.getters['domain/domain']
     }
   },
   mounted () {
@@ -45,11 +45,11 @@ export default {
   methods: {
     getArticleDetail (id, title) {
       return new Promise((resolve, reject) => {
-        getArticleDetail(id, title)
+        getArticleDetail(id, title, this.$store.getters['domain/domain'])
           .then((response) => {
             // console.log(JSON.stringify(response))
             this.article = response
-            console.log(JSON.stringify(this.article))
+            // console.log(JSON.stringify(this.article))
             resolve()
           })
           .catch((error) => {

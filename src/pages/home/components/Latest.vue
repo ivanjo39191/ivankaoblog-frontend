@@ -23,7 +23,7 @@ export default {
   name: 'Latest',
   data () {
     return {
-      backendUrl: process.env.VUE_APP_BACKEND_SERVER,
+      backendUrl: this.$store.getters['domain/domain'],
       appTitle: 'Latest',
       sidebar: false
     }
@@ -39,7 +39,11 @@ export default {
   },
   methods: {
     getBlog () {
-      this.$store.dispatch('blog/switchLatest', '')
+      const obj = {
+        typeName: '',
+        backendUrl: this.$store.getters['domain/domain']
+      }
+      this.$store.dispatch('blog/switchLatest', obj)
     }
   }
 }
