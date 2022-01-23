@@ -26,7 +26,10 @@ export default {
     AppHeader,
     AppNavbar,
     AppFooter
-  }
+  },
+  middleware: [
+    'domain'
+  ]
 
 }
 </script>
