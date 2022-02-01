@@ -1,5 +1,17 @@
 import request from '@/utils/request'
 
+// django google social login
+export function googleUserInfo2 (backendUrl) {
+  return request({
+    url: backendUrl + '/api/users/auth/user/',
+    method: 'get'
+  })
+}
+export function googleUserInfo (axios, backendUrl) {
+  const user = axios.get(backendUrl + '/api/users/auth/user/')
+  return user
+}
+
 // django jwt
 export function login (data) {
   return request({

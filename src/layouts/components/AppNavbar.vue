@@ -3,13 +3,29 @@
     <transition name="fade">
       <keep-alive>
         <div class="navbar-main">
-          <router-link to="/">
-            <div class="logo">
+          <div class="logo">
+            <router-link to="/">
               Logo
+            </router-link>
+          </div>
+          <div class="navbar-right">
+            <div>
+              <router-link :to="{ name: 'login'}">
+                <v-btn class="login">
+                  Login
+                </v-btn>
+              </router-link>
             </div>
-          </router-link>
-          <div class="login">
-            <Login />
+            <div>
+              <v-btn icon-left="google" @click="$auth.logout();afterLogout();">
+                logout
+              </v-btn>
+            </div>
+            <div class="userinfo">
+              <router-link to="/login/userinfo">
+                UserInfo
+              </router-link>
+            </div>
           </div>
         </div>
       </keep-alive>
@@ -18,16 +34,20 @@
 </template>
 
 <script>
-import Login from '@/pages/login/index.vue'
-
+import Swal from 'sweetalert2'
 export default {
   name: 'AppNavbar',
-  components: {
-    Login
+  methods: {
+    afterLogout () {
+      Swal.fire({
+        icon: 'success',
+        title: '您已登出',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      this.$router.push('/')
+    }
   }
-  // props: {
-  //   msg: String
-  // }
 }
 </script>
 
@@ -36,11 +56,14 @@ export default {
 
 @media (max-width: 750px) {
   .navbar-main {
-    display: grid;
+    display: flex;
     position: fixed;
-    height: 3vh;
-    width: 100%;
+    align-items: center;
+    height: 6.6vh;
     background-color: #fff;
+    width: 100%;
+    padding-left: 23vw;
+    padding-right: 23vw;
     z-index: 900;
   }
 
@@ -55,7 +78,16 @@ export default {
   }
 
   .navbar-right {
-    display: none;
+    margin-left: auto;
+    display: flex;
+  }
+
+  .navbar-right > div {
+    margin-right: 1vw;
+  }
+
+  .logo {
+    margin-left: 1vw;
   }
 }
 
@@ -77,11 +109,12 @@ export default {
     color: #000;
   }
 
-  .login {
+  .navbar-right {
     margin-left: auto;
+    display: flex;
   }
 
-  .login > div {
+  .navbar-right > div {
     margin-right: 1vw;
   }
 

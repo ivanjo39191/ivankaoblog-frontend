@@ -28,7 +28,24 @@ export default {
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     VUE_APP_BACKEND_SERVER: process.env.VUE_APP_BACKEND_SERVER || "http://your.api.server",
-    VUE_APP_GOOGLEMAPAPIKEY: process.env.VUE_APP_GOOGLEMAPAPIKEY 
+    VUE_APP_GOOGLEMAPAPIKEY: process.env.VUE_APP_GOOGLEMAPAPIKEY,
+    VUE_APP_BACKEND_SERVER_1: process.env.VUE_APP_BACKEND_SERVER_1,
+    VUE_APP_BACKEND_SERVER_1_SCHEME: process.env.VUE_APP_BACKEND_SERVER_1_SCHEME,
+    VUE_APP_BACKEND_SERVER_1_PORT: process.env.VUE_APP_BACKEND_SERVER_1_PORT,
+    VUE_APP_BACKEND_SERVER_1_DOMAIN: process.env.VUE_APP_BACKEND_SERVER_1_DOMAIN,
+    GOOGLE_OAUTH_1_CLIENTID: process.env.GOOGLE_OAUTH_1_CLIENTID,
+    GOOGLE_OAUTH_1_TOKEN: process.env.GOOGLE_OAUTH_1_TOKEN,
+    GOOGLE_OAUTH_1_USERINFO: process.env.GOOGLE_OAUTH_1_USERINFO,
+    GOOGLE_OAUTH_1_REDIRECTURI: process.env.GOOGLE_OAUTH_1_REDIRECTURI,
+
+    VUE_APP_BACKEND_SERVER_2: process.env.VUE_APP_BACKEND_SERVER_2,
+    VUE_APP_BACKEND_SERVER_2_SCHEME: process.env.VUE_APP_BACKEND_SERVER_2_SCHEME,
+    VUE_APP_BACKEND_SERVER_2_PORT: process.env.VUE_APP_BACKEND_SERVER_2_PORT,
+    VUE_APP_BACKEND_SERVER_2_DOMAIN: process.env.VUE_APP_BACKEND_SERVER_2_DOMAIN,
+    GOOGLE_OAUTH_2_CLIENTID: process.env.GOOGLE_OAUTH_2_CLIENTID,
+    GOOGLE_OAUTH_2_TOKEN: process.env.GOOGLE_OAUTH_2_TOKEN,
+    GOOGLE_OAUTH_2_USERINFO: process.env.GOOGLE_OAUTH_2_USERINFO,
+    GOOGLE_OAUTH_2_REDIRECTURI: process.env.GOOGLE_OAUTH_2_REDIRECTURI,
   },
 
   // src
@@ -65,7 +82,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -77,7 +95,77 @@ export default {
       lang: 'en'
     }
   },
-
+  auth: {
+    strategies: {
+      google_oauth_1: {
+        scheme: 'oauth2',
+        endpoints: {
+          authorization: 'https://accounts.google.com/o/oauth2/auth',
+          token: process.env.GOOGLE_OAUTH_1_TOKEN,
+          userInfo: process.env.GOOGLE_OAUTH_1_USERINFO,
+          // logout: 'https://example.com/logout'
+        },
+        token: {
+          property: 'access_token',
+          type: 'Bearer',
+          maxAge: 1800
+        },
+        refreshToken: {
+          property: 'refresh_token',
+          maxAge: 60 * 60 * 24 * 30
+        },
+        responseType: 'code',
+        grantType: 'authorization_code',
+        accessType: undefined,
+        redirectUri: process.env.GOOGLE_OAUTH_1_REDIRECTURI,
+        logoutRedirectUri: undefined,
+        clientId: process.env.GOOGLE_OAUTH_1_CLIENTID,
+        scope: ['profile', 'email'],
+        state: 'UNIQUE_AND_NON_GUESSABLE',
+        codeChallengeMethod: '',
+        responseMode: '',
+        acrValues: '',
+        // autoLogout: false
+      },
+      google_oauth_2: {
+        scheme: 'oauth2',
+        endpoints: {
+          authorization: 'https://accounts.google.com/o/oauth2/auth',
+          token: process.env.GOOGLE_OAUTH_2_TOKEN,
+          userInfo: process.env.GOOGLE_OAUTH_2_USERINFO,
+          // logout: 'https://example.com/logout'
+        },
+        token: {
+          property: 'access_token',
+          type: 'Bearer',
+          maxAge: 1800
+        },
+        refreshToken: {
+          property: 'refresh_token',
+          maxAge: 60 * 60 * 24 * 30
+        },
+        responseType: 'code',
+        grantType: 'authorization_code',
+        accessType: undefined,
+        redirectUri: process.env.GOOGLE_OAUTH_2_REDIRECTURI,
+        logoutRedirectUri: undefined,
+        clientId: process.env.GOOGLE_OAUTH_2_CLIENTID,
+        scope: ['profile', 'email'],
+        state: 'UNIQUE_AND_NON_GUESSABLE',
+        codeChallengeMethod: '',
+        responseMode: '',
+        acrValues: '',
+        // autoLogout: false
+      }
+    },
+    cookie: {
+      options: {
+        secure: process.env.NODE_ENV === "production", // Enable in Prod only!
+        sameSite: 'lax',
+      }
+    },
+    localStorage: false
+  },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
