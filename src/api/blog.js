@@ -42,6 +42,13 @@ export function getHomeCarousel (backendUrl) {
   })
 }
 
+export function getBlogSetting (backendUrl) {
+  return request({
+    url: backendUrl + '/api/blog/blogsetting/',
+    method: 'get'
+  })
+}
+
 export function getBlogType (backendUrl) {
   return request({
     url: backendUrl + '/api/blog/blogtype/',

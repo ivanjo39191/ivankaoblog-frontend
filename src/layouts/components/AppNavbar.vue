@@ -5,7 +5,7 @@
         <div class="navbar-main">
           <div class="logo">
             <router-link to="/">
-              Logo
+              {{ item.blogname }}
             </router-link>
           </div>
           <div class="navbar-right">
@@ -21,11 +21,11 @@
                 logout
               </v-btn>
             </div>
-            <div class="userinfo">
+            <!-- <div class="userinfo">
               <router-link to="/login/userinfo">
                 UserInfo
               </router-link>
-            </div>
+            </div> -->
           </div>
         </div>
       </keep-alive>
@@ -34,10 +34,31 @@
 </template>
 
 <script>
+import { getBlogSetting } from '@/api/blog'
 import Swal from 'sweetalert2'
 export default {
   name: 'AppNavbar',
+  data () {
+    return {
+      item: []
+    }
+  },
+  mounted () {
+    this.getBlogSetting()
+  },
   methods: {
+    getBlogSetting () {
+      return new Promise((resolve, reject) => {
+        getBlogSetting(this.$store.getters['domain/domain'])
+          .then((response) => {
+            this.item = response[0]
+            resolve()
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
     afterLogout () {
       Swal.fire({
         icon: 'success',
@@ -62,14 +83,14 @@ export default {
     height: 6.6vh;
     background-color: #fff;
     width: 100%;
-    padding-left: 23vw;
-    padding-right: 23vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
     z-index: 900;
   }
 
   .navbar-left {
     display: grid;
-    justify-items: center;
+    // justify-items: center;
     align-items: center;
   }
 
@@ -99,8 +120,8 @@ export default {
     height: 6.6vh;
     background-color: #fff;
     width: 100%;
-    padding-left: 23vw;
-    padding-right: 23vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
     z-index: 900;
   }
 
