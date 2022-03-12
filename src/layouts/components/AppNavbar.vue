@@ -43,11 +43,12 @@ export default {
       item: []
     }
   },
-  mounted () {
-    this.getBlogSetting()
+  async mounted () {
+    await this.getBlogSetting()
   },
   methods: {
     getBlogSetting () {
+      // alert(this.$store.getters['domain/domain'])
       return new Promise((resolve, reject) => {
         getBlogSetting(this.$store.getters['domain/domain'])
           .then((response) => {
