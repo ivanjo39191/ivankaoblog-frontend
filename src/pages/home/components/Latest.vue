@@ -11,16 +11,29 @@
     <div class="subnavbar-latest">
       <div v-for="item in articleItems" :key="item.id" class="subnavbar-latest-obj">
         <router-link :to="{ name: 'article', query: {id: item.id, title: item.title}}">
-          <div v-if="item.banner !== null" class="subnavbar-image">
-            <img :src="backendUrl + item.banner">
-          <!-- <img :src="backendUrl + item.banner + '?cache=' + Date.now()"> -->
-          </div>
-          <div class="subnavbar-title">
-            {{ item.title }}
-          </div>
-          <div class="subnavbar-subtitle">
-            {{ item.subtitle }}
-          </div>
+          <v-card
+            class="mx-auto"
+          >
+            <v-img
+              class="subnavbar-image"
+              :src="backendUrl + item.banner"
+            >
+              <v-card-title>
+                <div v-if="item.banner == null">
+                  {{ item.title }}
+                  <div />
+                </div>
+              </v-card-title>
+            </v-img>
+            <v-card-text class="text--primary">
+              <p class="subnavbar-title">
+                {{ item.title }}
+              </p>
+              <p class="subnavbar-subtitle">
+                {{ item.subtitle }}
+              </p>
+            </v-card-text>
+          </v-card>
         </router-link>
       </div>
     </div>
@@ -89,6 +102,27 @@ export default {
   .subnavbar-latest-obj {
     margin-bottom: 5vh;
   }
+
+  .subnavbar-image {
+    background-color: rgba(247, 247, 247);
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    margin-bottom: 1vh;
+    width: 90vw;
+  }
+
+  .subnavbar-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5vh;
+  }
+
+  .subnavbar-subtitle {
+    font-size: 1.125rem;
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: 300;
+  }
 }
 
 @media (min-width: 980px) {
@@ -109,9 +143,8 @@ export default {
   }
 }
 
-.subnavbar-image > img {
-  /* width: 17vw;
-  height: 17vh; */
+.subnavbar-image {
+  background-color: rgba(247, 247, 247);
   max-width: 100%;
   max-height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -119,8 +152,9 @@ export default {
 }
 
 .subnavbar-title {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5vh;
 }
 
 .subnavbar-subtitle {
