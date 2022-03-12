@@ -1,31 +1,45 @@
 <template>
-  <div class="subnavbar-latest">
-    <div v-for="item in articleItems" :key="item.id">
-      <router-link :to="{ name: 'article', query: {id: item.id, title: item.title}}">
-        <div v-if="item.banner !== null" class="subnavbar-image">
-          <img :src="backendUrl + item.banner">
+  <div>
+    <div v-if="loading" class="subnavbar-latest">
+      <vcl-instagram />
+      <vcl-instagram />
+      <vcl-instagram />
+      <vcl-instagram />
+      <vcl-instagram />
+      <vcl-instagram />
+    </div>
+    <div class="subnavbar-latest">
+      <div v-for="item in articleItems" :key="item.id" class="subnavbar-latest-obj">
+        <router-link :to="{ name: 'article', query: {id: item.id, title: item.title}}">
+          <div v-if="item.banner !== null" class="subnavbar-image">
+            <img :src="backendUrl + item.banner">
           <!-- <img :src="backendUrl + item.banner + '?cache=' + Date.now()"> -->
-        </div>
-        <div class="subnavbar-title">
-          {{ item.title }}
-        </div>
-        <div class="subnavbar-subtitle">
-          {{ item.subtitle }}
-        </div>
-      </router-link>
+          </div>
+          <div class="subnavbar-title">
+            {{ item.title }}
+          </div>
+          <div class="subnavbar-subtitle">
+            {{ item.subtitle }}
+          </div>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
+import { VclInstagram } from 'vue-content-loading'
 export default {
   name: 'Latest',
+  components: {
+    VclInstagram
+  },
   data () {
     return {
       backendUrl: this.$store.getters['domain/domain'],
       appTitle: 'Latest',
-      sidebar: false
+      sidebar: false,
+      loading: true
     }
   },
   computed: {
@@ -34,10 +48,18 @@ export default {
     }
 
   },
-  mounted () {
-    this.getBlog()
+  async mounted () {
+    this.start()
+    await this.getBlog()
+    this.finish()
   },
   methods: {
+    start () {
+      this.loading = true
+    },
+    finish () {
+      this.loading = false
+    },
     getBlog () {
       const obj = {
         typeName: '',
@@ -50,6 +72,12 @@ export default {
 </script>
 <style>
 @media (max-width: 979px) {
+  .loading-page {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+
   .subnavbar-latest {
     display: grid;
     align-items: start;
@@ -57,9 +85,19 @@ export default {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     min-height: 50vh;
   }
+
+  .subnavbar-latest-obj {
+    margin-bottom: 5vh;
+  }
 }
 
 @media (min-width: 980px) {
+  .loading-page {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+
   .subnavbar-latest {
     display: grid;
     align-items: start;

@@ -88,7 +88,14 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
-
+  // Loading
+  loading: {
+    color: 'black',
+    failedColor: 'red',
+    height: '2px',
+    duration: 5000,
+    rtl: false
+},
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {

@@ -1,23 +1,31 @@
 
 <template>
-  <v-carousel
-    v-if="items.length"
-    cycle
-    height="75vh"
-    hide-delimiter-background
-    :show-arrows="false"
-  >
-    <v-carousel-item v-for="item in items" :key="item.id" :src="item.banner">
-      <div class="carousel-text">
-        <div class="carousel-title">
-          {{ item.title }}
+  <div>
+    <div v-if="loading" class="loading-page">
+      <v-progress-circular
+        indeterminate
+        color="primary"
+      />
+    </div>
+    <v-carousel
+      v-if="items.length && loading !== true"
+      cycle
+      height="75vh"
+      hide-delimiter-background
+      :show-arrows="false"
+    >
+      <v-carousel-item v-for="item in items" :key="item.id" :src="item.banner">
+        <div class="carousel-text">
+          <div class="carousel-title">
+            {{ item.title }}
+          </div>
+          <div class="carousel-subtitle">
+            {{ item.subtitle }}
+          </div>
         </div>
-        <div class="carousel-subtitle">
-          {{ item.subtitle }}
-        </div>
-      </div>
-    </v-carousel-item>
-  </v-carousel>
+      </v-carousel-item>
+    </v-carousel>
+  </div>
 </template>
 
 <script>
@@ -27,13 +35,22 @@ export default {
   name: 'HomeCarousel',
   data () {
     return {
-      items: []
+      items: [],
+      loading: true
     }
   },
-  mounted () {
-    this.getHomeCarousel()
+  async mounted () {
+    this.start()
+    await this.getHomeCarousel()
+    this.finish()
   },
   methods: {
+    start () {
+      this.loading = true
+    },
+    finish () {
+      this.loading = false
+    },
     getHomeCarousel () {
       return new Promise((resolve, reject) => {
         getHomeCarousel(this.$store.getters['domain/domain'])
@@ -52,6 +69,12 @@ export default {
 </script>
 
 <style scoped>
+  .loading-page {
+    display: grid;
+    height: 75vh;
+    align-items: center;
+    justify-items: center;
+  }
 
   .carousel-height {
     margin-bottom: 0;
