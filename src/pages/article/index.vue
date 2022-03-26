@@ -33,29 +33,39 @@ export default {
     // Latest
   },
   layout: 'index',
-  data () {
-    return {
-      article: [],
-      backendUrl: this.$store.getters['domain/domain']
-    }
-  },
-  mounted () {
-    this.getArticleDetail(this.$route.query.id, this.$route.query.title)
-  },
-  methods: {
-    getArticleDetail (id, title) {
-      return new Promise((resolve, reject) => {
-        getArticleDetail(id, title, this.$store.getters['domain/domain'])
-          .then((response) => {
-            // console.log(JSON.stringify(response))
-            this.article = response
-            // console.log(JSON.stringify(this.article))
-            resolve()
-          })
-          .catch((error) => {
-            reject(error)
-          })
+  async asyncData (context) {
+    const article = await getArticleDetail(context.route.query.id, context.route.query.title, context.store.getters['domain/domain'])
+      .then((response) => {
+        return response
       })
+    const content = article.content.replace(/<[^>]*>?/gm, '').replace(/\r\n|\n/g, '').substring(0, 170)
+    return { article, content }
+  },
+  head () {
+    return {
+      titleTemplate: `%s - ${this.article.title}`,
+      title: this.$store.getters['domain/title'],
+      meta: [
+        { hid: 'og:title', name: 'og:title', content: `${this.article.title}` },
+        { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.$store.getters['domain/title'] },
+        { hid: 'og:description', name: 'og:description', content: `${this.content}` },
+        { hid: 'og:site_name', name: 'og:site_name', content: this.$store.getters['domain/title'] },
+        { hid: 'og:image', name: 'og:image', content: `${this.article.banner}` },
+        { hid: 'og:locale', name: 'og:locale', content: 'zh_TW' },
+        { hid: 'title', name: 'title', content: `${this.article.title}` },
+        { hid: 'description', name: 'description', content: `${this.content}` },
+        { hid: 'image', name: 'image', content: `${this.article.banner}` },
+        { hid: 'og:url', name: 'og:url', content: this.$store.getters['domain/domain'] + this.$route.path }
+      ],
+      htmlAttrs: {
+        lang: 'zh-TW'
+      },
+      link: [
+        {
+          rel: 'canonical',
+          href: this.$store.getters['domain/domain'] + this.$route.path
+        }
+      ]
     }
   }
 }
