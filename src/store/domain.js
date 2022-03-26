@@ -3,7 +3,8 @@ export const state = () => ({
   domain: '',
   title: '',
   subtitle: '',
-  banner: ''
+  banner: '',
+  host:''
 })
 
 export const mutations = {
@@ -18,6 +19,9 @@ export const mutations = {
   },
   setBanner (state, banner) {
     state.banner = banner
+  },
+  setHost (state, host) {
+    state.host = host
   }
 }
 
@@ -33,5 +37,8 @@ export const getters = {
   },
   banner (state) {
     return state.banner
+  },
+  host (state) {
+    return state.host
   }
 }

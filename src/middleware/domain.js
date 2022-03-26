@@ -3,6 +3,7 @@ export default async function ({ store, req }) {
   // router-link 無法讀取到 req 會報錯，故進行判斷
   if (req) {
     const domain = req.headers.host
+    store.commit('domain/setHost', domain)
     let backendUrl = ''
     if (domain === process.env.VUE_APP_BACKEND_SERVER_1_DOMAIN) {
       store.commit('domain/setDomain', process.env.VUE_APP_BACKEND_SERVER_1)

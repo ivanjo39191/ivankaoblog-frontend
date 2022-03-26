@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import SubNavbar from './components/SubNavbar'
 import { getArticleDetail } from '@/api/blog'
+import SubNavbar from './components/SubNavbar'
 // import HomeCarousel from './home/components/HomeCarousel'
 // import Latest from './home/components/Latest'
 export default {
@@ -34,13 +34,12 @@ export default {
   },
   layout: 'index',
   async asyncData (context) {
-    const article = await getArticleDetail(context.route.query.id, context.route.query.title, context.store.getters['domain/domain'])
+    const article = await getArticleDetail(context.route.query.id, encodeURI(context.route.query.title), context.store.getters['domain/domain'])
       .then((response) => {
         return response
       })
     const content = article.content.replace(/<[^>]*>?/gm, '').replace(/\r\n|\n/g, '').replace(/&nbsp;/g, ' ').substring(0, 170)
-    const host = context.req.headers.host
-    return { article, content, host }
+    return { article, content }
   },
   head () {
     return {
@@ -56,18 +55,10 @@ export default {
         { hid: 'og:site_name', property: 'og:site_name', content: this.$store.getters['domain/title'] },
         { hid: 'og:image:secure_url', property: 'og:image', content: this.article.banner },
         { hid: 'og:locale', property: 'og:locale', content: 'zh_TW' },
-        { hid: 'og:url', property: 'og:url', content: 'https://' + this.article.banner }
       ],
       htmlAttrs: {
         lang: 'zh-TW'
-      },
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: 'https://' + this.host
-        }
-      ]
+      }
     }
   }
 }

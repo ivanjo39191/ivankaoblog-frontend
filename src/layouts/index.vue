@@ -30,10 +30,6 @@ export default {
   middleware: [
     'domain'
   ],
-  async asyncData (context) {
-    const host = await context.req.headers.host
-    return { host }
-  },
   head () {
     return {
       titleTemplate: `%s - ${this.$store.getters['domain/subtitle']}`,
@@ -48,7 +44,8 @@ export default {
         { hid: 'og:image', property: 'og:image', content: this.$store.getters['domain/banner'] },
         { hid: 'apple-mobile-web-app-title', property: 'apple-mobile-web-app-title', content: this.$store.getters['domain/subtitle'] },
         { hid: 'og:site_name', property: 'og:site_name', content: this.$store.getters['domain/title'] },
-        { hid: 'og:locale', property: 'og:locale', content: 'zh_TW' }
+        { hid: 'og:locale', property: 'og:locale', content: 'zh_TW' },
+        { hid: 'og:url', property: 'og:url', content: 'https://' + this.$store.getters['domain/host'] }
       ],
       htmlAttrs: {
         lang: 'zh-TW'
@@ -57,7 +54,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: 'https://' + this.host
+          href: 'https://' + this.$store.getters['domain/host']
         }
       ]
     }
