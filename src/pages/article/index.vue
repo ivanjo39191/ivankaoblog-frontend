@@ -21,9 +21,9 @@
 </template>
 
 <script>
+import SubNavbar from './components/SubNavbar'
 import { getArticleDetail } from '@/api/blog'
 // import HomeCarousel from './home/components/HomeCarousel'
-import SubNavbar from './components/SubNavbar'
 // import Latest from './home/components/Latest'
 export default {
   name: 'Article',
@@ -38,32 +38,34 @@ export default {
       .then((response) => {
         return response
       })
-    const content = article.content.replace(/<[^>]*>?/gm, '').replace(/\r\n|\n/g, '').substring(0, 170)
-    return { article, content }
+    const content = article.content.replace(/<[^>]*>?/gm, '').replace(/\r\n|\n/g, '').replace(/&nbsp;/g, ' ').substring(0, 170)
+    const host = context.req.headers.host
+    return { article, content, host }
   },
   head () {
     return {
       titleTemplate: `%s - ${this.article.title}`,
       title: this.$store.getters['domain/title'],
       meta: [
-        { hid: 'og:title', name: 'og:title', content: `${this.article.title}` },
-        { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.$store.getters['domain/title'] },
-        { hid: 'og:description', name: 'og:description', content: `${this.content}` },
-        { hid: 'og:site_name', name: 'og:site_name', content: this.$store.getters['domain/title'] },
-        { hid: 'og:image', name: 'og:image', content: `${this.article.banner}` },
-        { hid: 'og:locale', name: 'og:locale', content: 'zh_TW' },
         { hid: 'title', name: 'title', content: `${this.article.title}` },
         { hid: 'description', name: 'description', content: `${this.content}` },
-        { hid: 'image', name: 'image', content: `${this.article.banner}` },
-        { hid: 'og:url', name: 'og:url', content: this.$store.getters['domain/domain'] + this.$route.path }
+        { hid: 'image', name: 'image', content: this.article.banner },
+        { hid: 'og:title', property: 'og:title', content: `${this.article.title}` },
+        { hid: 'apple-mobile-web-app-title', property: 'apple-mobile-web-app-title', content: this.$store.getters['domain/title'] },
+        { hid: 'og:description', property: 'og:description', content: `${this.content}` },
+        { hid: 'og:site_name', property: 'og:site_name', content: this.$store.getters['domain/title'] },
+        { hid: 'og:image:secure_url', property: 'og:image', content: this.article.banner },
+        { hid: 'og:locale', property: 'og:locale', content: 'zh_TW' },
+        { hid: 'og:url', property: 'og:url', content: 'https://' + this.article.banner }
       ],
       htmlAttrs: {
         lang: 'zh-TW'
       },
       link: [
         {
+          hid: 'canonical',
           rel: 'canonical',
-          href: this.$store.getters['domain/domain'] + this.$route.path
+          href: 'https://' + this.host
         }
       ]
     }

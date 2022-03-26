@@ -30,6 +30,10 @@ export default {
   middleware: [
     'domain'
   ],
+  async asyncData (context) {
+    const host = await context.req.headers.host
+    return { host }
+  },
   head () {
     return {
       titleTemplate: `%s - ${this.$store.getters['domain/subtitle']}`,
@@ -39,21 +43,21 @@ export default {
         { hid: 'description', name: 'description', content: this.$store.getters['domain/subtitle'] },
         { hid: 'site_name', name: 'site_name', content: this.$store.getters['domain/subtitle'] },
         { hid: 'locale', name: 'locale', content: 'zh_TW' },
-        { hid: 'og:title', name: 'og:title', content: this.$store.getters['domain/title'] },
-        { hid: 'og:description', name: 'og:description', content: this.$store.getters['domain/subtitle'] },
-        { hid: 'og:image', name: 'og:image', content: this.$store.getters['domain/banner'] },
-        { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.$store.getters['domain/subtitle'] },
-        { hid: 'og:site_name', name: 'og:site_name', content: this.$store.getters['domain/title'] },
-        { hid: 'og:locale', name: 'og:locale', content: 'zh_TW' },
-        { hid: 'og:url', name: 'og:url', content: this.$store.getters['domain/domain'] + this.$route.path }
+        { hid: 'og:title', property: 'og:title', content: this.$store.getters['domain/title'] },
+        { hid: 'og:description', property: 'og:description', content: this.$store.getters['domain/subtitle'] },
+        { hid: 'og:image', property: 'og:image', content: this.$store.getters['domain/banner'] },
+        { hid: 'apple-mobile-web-app-title', property: 'apple-mobile-web-app-title', content: this.$store.getters['domain/subtitle'] },
+        { hid: 'og:site_name', property: 'og:site_name', content: this.$store.getters['domain/title'] },
+        { hid: 'og:locale', property: 'og:locale', content: 'zh_TW' }
       ],
       htmlAttrs: {
         lang: 'zh-TW'
       },
       link: [
         {
+          hid: 'canonical',
           rel: 'canonical',
-          href: this.$store.getters['domain/domain'] + this.$route.path
+          href: 'https://' + this.host
         }
       ]
     }
