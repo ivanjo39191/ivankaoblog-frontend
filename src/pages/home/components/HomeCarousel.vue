@@ -10,7 +10,8 @@
     <v-carousel
       v-if="items.length && loading !== true"
       cycle
-      height="75vh"
+      height="auto"
+      interval="10000"
       hide-delimiter-background
       :show-arrows="false"
     >
@@ -69,36 +70,36 @@ export default {
 </script>
 
 <style scoped>
-  .loading-page {
-    display: grid;
-    height: 75vh;
-    align-items: center;
-    justify-items: center;
-  }
+.loading-page {
+  display: grid;
+  height: 75vh;
+  align-items: center;
+  justify-items: center;
+}
 
-  .carousel-height {
-    margin-bottom: 0;
-  }
+.carousel-height {
+  margin-bottom: 0;
+}
 
-  .carousel-text {
-    display: grid;
-    justify-items: center;
-    margin-top: 30vh;
-    margin-left: -50vw;
-    color: #fff;
-    text-shadow: 0.1em 0.1em 0.05em #333;
-  }
+.carousel-text {
+  display: grid;
+  justify-items: center;
+  margin-top: 30vh;
+  margin-left: -50vw;
+  color: #fff;
+  text-shadow: 0.1em 0.1em 0.05em #333;
+}
 
-  .carousel-title {
-    font-size: 2.5rem;
-  }
+.carousel-title {
+  font-size: 2.5rem;
+}
 
-  .carousel-subtitle {
-    font-size: 1.5rem;
-    margin-top: 5vh;
-    margin-left: 15vw;
-    margin-right: 15vw;
-    text-align: center;
-  }
+.carousel-subtitle {
+  font-size: 1.5rem;
+  margin-top: 5vh;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  text-align: center;
+}
 
 </style>
