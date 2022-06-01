@@ -33,6 +33,7 @@ export default {
     VUE_APP_BACKEND_SERVER_1_SCHEME: process.env.VUE_APP_BACKEND_SERVER_1_SCHEME,
     VUE_APP_BACKEND_SERVER_1_PORT: process.env.VUE_APP_BACKEND_SERVER_1_PORT,
     VUE_APP_BACKEND_SERVER_1_DOMAIN: process.env.VUE_APP_BACKEND_SERVER_1_DOMAIN,
+    GOOGLE_TAG: process.env.GOOGLE_TAG,
     GOOGLE_OAUTH_1_CLIENTID: process.env.GOOGLE_OAUTH_1_CLIENTID,
     GOOGLE_OAUTH_1_TOKEN: process.env.GOOGLE_OAUTH_1_TOKEN,
     GOOGLE_OAUTH_1_USERINFO: process.env.GOOGLE_OAUTH_1_USERINFO,
@@ -58,6 +59,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {src: '@/plugins/router', ssr: false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -84,6 +86,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/auth-next',
+    '@nuxtjs/sitemap'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
