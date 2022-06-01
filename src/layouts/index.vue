@@ -32,7 +32,7 @@ export default {
   ],
   head () {
     return {
-      titleTemplate: `%s - ${this.$store.getters['domain/subtitle']}`,
+      titleTemplate: `%s | ${this.$store.getters['domain/subtitle']}`,
       title: this.$store.getters['domain/title'],
       meta: [
         { hid: 'title', name: 'title', content: this.$store.getters['domain/title'] },
@@ -56,8 +56,22 @@ export default {
           rel: 'canonical',
           href: 'https://' + this.$store.getters['domain/host']
         }
+      ],
+      script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-' + process.env.GOOGLE_TAG,
+          innerHTML: 'window.dataLayer = window.dataLayer || [];',
+          'data-ad-client': 'ca-pub-G-' + process.env.GOOGLE_TAG,
+          async: true
+        }
       ]
     }
+  },
+  mounted () {
+    function gtag () { window.dataLayer.push(arguments) }
+    gtag('js', new Date())
+
+    gtag('config', 'G-' + process.env.GOOGLE_TAG)
   }
 
 }
