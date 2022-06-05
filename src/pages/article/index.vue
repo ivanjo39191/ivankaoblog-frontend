@@ -114,106 +114,6 @@ export default {
     -ms-hyphens: none;
     hyphens: none;
   }
-
-  .article-content >>> h1 {
-    color: #292929;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 1.875rem;
-    font-weight: 700 !important;
-    letter-spacing: 0.04rem;
-    line-height: 1.5;
-    margin: 3rem 0 1rem 0;
-  }
-
-  .article-content >>> h2 {
-    color: #292929;
-    font-size: 2rem;
-    font-weight: 700 !important;
-    margin: 2rem 0 1rem 0;
-  }
-
-  .article-content >>> h3 {
-    color: #292929;
-    font-size: 1.5rem;
-    font-weight: 500 !important;
-    margin: 1.5rem 0 1rem 0;
-  }
-
-  .article-content >>> h4 {
-    color: #292929;
-    margin: 1rem 0 1rem 0;
-  }
-
-  .article-content >>> p {
-    color: #292929;
-    font-size: 1.3125rem;
-    font-weight: 300;
-    letter-spacing: 0.04rem;
-    line-height: 1.5;
-    margin: 2rem 0;
-  }
-
-  .article-content >>> blockquote {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 40px;
-    margin-inline-end: 40px;
-  }
-
-  .article-content >>> blockquote > p {
-    color: rgba(117, 117, 117, 1);
-    letter-spacing: -0.009em;
-    line-height: 2.5rem;
-    font-weight: 300;
-    font-size: 1.75rem;
-    margin-top: 0.75rem;
-    margin-bottom: -0.46rem;
-    display: block;
-    margin-block-start: 1rem;
-    margin-block-end: 1rem;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-  }
-
-  .article-content >>> hr {
-    margin-left: 17vw;
-    width: 27px;
-    border: 5px dotted #292929;
-    border-style: none none dotted;
-    color: #fff;
-    background-color: #fff;
-  }
-
-  .article-content >>> li {
-    list-style-position: inside;
-    color: #262626;
-    font-size: 1.3125rem;
-    font-weight: 300;
-    letter-spacing: 0.04rem;
-    line-height: 1.5;
-    margin: 1rem 0;
-  }
-
-  /* Code blocks */
-  .article-content >>> pre {
-    padding: 1em;
-    margin: 0.5em 0;
-    overflow: auto;
-    border-radius: 0.3em;
-  }
-
-  .article-content >>> :not(pre) > code,
-  .article-content >>> pre {
-    background: #272822;
-  }
-
-  /* Inline code */
-  .article-content >>> :not(pre) > code {
-    padding: 0.1em;
-    border-radius: 0.3em;
-    white-space: normal;
-  }
 }
 
 @media (min-width: 980px) {
@@ -349,5 +249,33 @@ export default {
   padding: 0.1em;
   border-radius: 0.3em;
   white-space: normal;
+}
+
+/* Inline code */
+.article-content >>> table,
+th,
+td {
+  border: 1px solid gray;
+}
+
+.article-content >>> table {
+  width: 100%;
+}
+
+.article-content >>> th {
+  background-color: gray;
+  color: white;
+  font-size: 1.3125rem;
+  font-weight: 500;
+}
+
+.article-content >>> td {
+  border: 1px solid gray;
+  color: #292929;
+  font-size: 1.125rem;
+  font-weight: 300;
+  letter-spacing: 0.04rem;
+  line-height: 1.5;
+  margin: 2rem 0;
 }
 </style>
